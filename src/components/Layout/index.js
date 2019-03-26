@@ -145,8 +145,7 @@ const styles = {
 	},
 	mainContent: {
 		flex: 1,
-		padding: '48px 36px 0',
-		background: '#eaeff1',
+		padding: '0px',
 	},
 }
 
@@ -172,7 +171,7 @@ function Layout({ location, title, children, classes }) {
 					</Hidden>
 				</nav>
 				<div className={classes.appContent}>
-					<Header onDrawerToggle={() => setMobileOpen(!mobileOpen)} />
+					<Header onDrawerToggle={() => setMobileOpen(!mobileOpen)} title={title} />
 					<main className={classes.mainContent}>{children}</main>
 				</div>
 			</div>

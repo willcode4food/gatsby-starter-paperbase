@@ -9,8 +9,6 @@ import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-import Tab from '@material-ui/core/Tab'
-import Tabs from '@material-ui/core/Tabs'
 import Toolbar from '@material-ui/core/Toolbar'
 import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
@@ -40,9 +38,9 @@ const styles = theme => ({
 	},
 })
 
-function Header({ classes, onDrawerToggle }) {
+function Header({ classes, onDrawerToggle, title }) {
 	return (
-		<React.Fragment>
+		<>
 			<AppBar color="primary" position="sticky" elevation={0}>
 				<Toolbar>
 					<Grid container spacing={8} alignItems="center">
@@ -84,7 +82,7 @@ function Header({ classes, onDrawerToggle }) {
 					<Grid container alignItems="center" spacing={8}>
 						<Grid item xs>
 							<Typography color="inherit" variant="h5">
-								Authentication
+								{title}
 							</Typography>
 						</Grid>
 						<Grid item>
@@ -102,15 +100,7 @@ function Header({ classes, onDrawerToggle }) {
 					</Grid>
 				</Toolbar>
 			</AppBar>
-			<AppBar component="div" className={classes.secondaryBar} color="primary" position="static" elevation={0}>
-				<Tabs value={0} textColor="inherit">
-					<Tab textColor="inherit" label="Users" />
-					<Tab textColor="inherit" label="Sign-in method" />
-					<Tab textColor="inherit" label="Templates" />
-					<Tab textColor="inherit" label="Usage" />
-				</Tabs>
-			</AppBar>
-		</React.Fragment>
+		</>
 	)
 }
 

@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
+import Grid from '@material-ui/core/Grid'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -93,7 +94,12 @@ function Navigator(props) {
 		<Drawer variant="permanent" {...other}>
 			<List disablePadding>
 				<ListItem className={classNames(classes.firebase, classes.item, classes.itemCategory)}>
-					Paperbase
+					<Grid container spacing={8} direction="row">
+						<Grid item>
+							<img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="40" />
+						</Grid>
+						<Grid item>Paperbase</Grid>
+					</Grid>
 				</ListItem>
 				<ListItem className={classNames(classes.item, classes.itemCategory)}>
 					<ListItemIcon>
