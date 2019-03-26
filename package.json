@@ -1,0 +1,36 @@
+{
+  "name": "gatsby-starter-paperbase",
+  "version": "1.0.0",
+  "description": "A Gatsby Starter for using Material UI's Paperbase premium theme.  Great for making admin tools and dashboards.",
+  "main": "index.js",
+  "repository": "https://github.com/willcode4food/gatsby-starter-paperbase",
+  "author": "Marc Arbesman marbesman@gmail.com",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "gatsby": "^2.3.0",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "typeface-merriweather": "^0.0.72",
+    "typeface-montserrat": "^0.0.54",
+    "typography": "^0.16.19",
+    "typography-theme-wordpress-2016": "^0.16.19"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-react-app": "^3.0.8",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "prettier": "^1.16.4"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "rm -rf public && rm -rf .cache",
+    "dev": "NODE_ENV=development rm -rf ./.cache && yarn && gatsby develop -H 0.0.0.0",
+    "develop": "yarn dev",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "prebuild": "yarn clean && yarn",
+    "start": "yarn develop"
+    
+  }
+}
