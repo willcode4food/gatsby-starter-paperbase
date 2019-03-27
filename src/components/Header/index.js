@@ -27,7 +27,6 @@ const styles = theme => ({
 		padding: 4,
 	},
 	link: {
-		textDecoration: 'none',
 		color: lightColor,
 		'&:hover': {
 			color: theme.palette.common.white,
@@ -35,6 +34,11 @@ const styles = theme => ({
 	},
 	button: {
 		borderColor: lightColor,
+	},
+	avatar: {
+		img: {
+			margin: 0,
+		},
 	},
 })
 
@@ -71,7 +75,7 @@ function Header({ classes, onDrawerToggle, title }) {
 						</Grid>
 						<Grid item>
 							<IconButton color="inherit" className={classes.iconButtonAvatar}>
-								<Avatar className={classes.avatar} src="/static/images/avatar/1.jpg" />
+								<Avatar className={{ image: { margin: 0 } }} src="/images/avatar.jpg" />
 							</IconButton>
 						</Grid>
 					</Grid>

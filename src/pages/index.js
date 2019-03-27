@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
 import Content from 'components/Content'
 
 function DashboardIndex({ data, location, classes }) {

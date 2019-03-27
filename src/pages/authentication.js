@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
-import PropTypes from 'prop-types'
 import AuthContent from 'components/AuthContent'
 
 function Authentication({ data, location }) {

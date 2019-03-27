@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Hidden from '@material-ui/core/Hidden'
 import Navigator from 'components/Navigator'
 
 import Header from 'components/Header'
-import { rhythm, scale } from 'utils/typography'
 
 let theme = createMuiTheme({
 	typography: {

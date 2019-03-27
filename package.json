@@ -15,8 +15,7 @@
     "react-dom": "^16.8.5",
     "typeface-merriweather": "^0.0.72",
     "typeface-montserrat": "^0.0.54",
-    "typography": "^0.16.19",
-    "typography-theme-wordpress-2016": "^0.16.19"
+    "typography": "^0.16.19"
   },
   "devDependencies": {
     "eslint": "^5.15.3",
