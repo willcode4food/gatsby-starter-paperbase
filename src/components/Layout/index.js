@@ -179,5 +179,8 @@ function Layout({ location, title, children, classes }) {
 
 Layout.propTypes = {
 	classes: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
+	title: PropTypes.string.isRequired,
+	children: PropTypes.object.isRequired,
 }
 export default withStyles(styles)(Layout)

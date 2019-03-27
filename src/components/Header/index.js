@@ -75,7 +75,7 @@ function Header({ classes, onDrawerToggle, title }) {
 						</Grid>
 						<Grid item>
 							<IconButton color="inherit" className={classes.iconButtonAvatar}>
-								<Avatar className={{ image: { margin: 0 } }} src="/images/avatar.jpg" />
+								<Avatar className={classes.avatar} src="/images/avatar.jpg" />
 							</IconButton>
 						</Grid>
 					</Grid>
@@ -85,7 +85,7 @@ function Header({ classes, onDrawerToggle, title }) {
 				<Toolbar>
 					<Grid container alignItems="center" spacing={8}>
 						<Grid item xs>
-							<Typography color="inherit" variant="h5">
+							<Typography style={{ textTransform: 'capitalize' }} color="inherit" variant="h5">
 								{title}
 							</Typography>
 						</Grid>
@@ -111,6 +111,7 @@ function Header({ classes, onDrawerToggle, title }) {
 Header.propTypes = {
 	classes: PropTypes.object.isRequired,
 	onDrawerToggle: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
 }
 
 export default withStyles(styles)(Header)

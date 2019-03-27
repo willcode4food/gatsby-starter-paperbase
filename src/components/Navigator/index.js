@@ -30,15 +30,15 @@ const categories = [
 			{ id: 'Storage', icon: <PermMediaOutlinedIcon />, page: 'storage' },
 			{ id: 'Hosting', icon: <PublicIcon />, page: 'hosting' },
 			{ id: 'Functions', icon: <SettingsEthernetIcon />, page: 'functions' },
-			{ id: 'ML Kit', icon: <SettingsInputComponentIcon />, page: 'mlkit' },
+			{ id: 'ML Kit', icon: <SettingsInputComponentIcon />, page: 'ml' },
 		],
 	},
 	{
 		id: 'Quality',
 		children: [
-			{ id: 'Analytics', icon: <SettingsIcon /> },
-			{ id: 'Performance', icon: <TimerIcon /> },
-			{ id: 'Test Lab', icon: <PhonelinkSetupIcon /> },
+			{ id: 'Analytics', icon: <SettingsIcon />, page: 'analytics' },
+			{ id: 'Performance', icon: <TimerIcon />, page: 'performance' },
+			{ id: 'Test Lab', icon: <PhonelinkSetupIcon />, page: 'lab' },
 		],
 	},
 ]
@@ -88,13 +88,13 @@ const styles = theme => ({
 	},
 })
 
-function Navigator({ classes, location = null, ...other }) {
+function Navigator({ classes, location = null, ...rest }) {
 	const matchPath = location ? location.pathname.replace(/\//g, '') : null
 	return (
-		<Drawer variant="permanent" {...other}>
+		<Drawer variant="permanent" {...rest}>
 			<List disablePadding>
 				<ListItem className={classNames(classes.firebase, classes.item, classes.itemCategory)}>
-					<Grid container spacing={8} direction="row">
+					<Grid container alignItems="center" spacing={8} direction="row">
 						<Grid item>
 							<Logo />
 						</Grid>
@@ -127,7 +127,6 @@ function Navigator({ classes, location = null, ...other }) {
 							</ListItemText>
 						</ListItem>
 						{children.map(({ id: childId, icon, page = null }) => {
-							console.log(page)
 							return (
 								<ListItem
 									button
@@ -146,9 +145,11 @@ function Navigator({ classes, location = null, ...other }) {
 											textDense: classes.textDense,
 										}}
 									>
-										<Link style={{ textDecoration: 'none', color: 'inherit' }} to={page}>
-											{childId}
-										</Link>
+										{page && (
+											<Link style={{ textDecoration: 'none', color: 'inherit' }} to={page}>
+												{childId}
+											</Link>
+										)}
 									</ListItemText>
 								</ListItem>
 							)
@@ -163,6 +164,7 @@ function Navigator({ classes, location = null, ...other }) {
 
 Navigator.propTypes = {
 	classes: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Navigator)

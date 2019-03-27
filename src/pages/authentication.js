@@ -1,26 +1,18 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import Layout from 'components/Layout'
 import AuthContent from 'components/AuthContent'
 
-function Authentication({ data, location }) {
-	const { title } = data.site.siteMetadata
+function AuthenticationPage({ data, location }) {
+	const pageTitle = location ? location.pathname.replace(/\//g, '') : ''
 	return (
-		<Layout location={location} title={title}>
+		<Layout location={location} title={pageTitle}>
 			<AuthContent />
 		</Layout>
 	)
 }
-// Authentication.propTypes = {
-// 	classes: PropTypes.object.isRequired,
-// }
-export const pageQuery = graphql`
-	query {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-	}
-`
-export default Authentication
+AuthenticationPage.propTypes = {
+	data: PropTypes.object.isRequired,
+	location: PropTypes.object,
+}
+export default AuthenticationPage

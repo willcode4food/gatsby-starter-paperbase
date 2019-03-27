@@ -4,7 +4,7 @@ import Layout from 'components/Layout'
 import PropTypes from 'prop-types'
 import Content from 'components/Content'
 
-function DashboardIndex({ data, location, classes }) {
+function DashboardIndex({ data, location }) {
 	const { title } = data.site.siteMetadata
 	return (
 		<Layout location={location} title={title}>
@@ -13,7 +13,8 @@ function DashboardIndex({ data, location, classes }) {
 	)
 }
 DashboardIndex.propTypes = {
-	classes: PropTypes.object.isRequired,
+	data: PropTypes.object.isRequired,
+	location: PropTypes.object,
 }
 export const pageQuery = graphql`
 	query {
