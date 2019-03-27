@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 function Logo() {
 	return (
@@ -15,4 +15,4 @@ function Logo() {
 	)
 }
 
-export default Logo
+export default memo(Logo)
