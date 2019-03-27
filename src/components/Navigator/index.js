@@ -101,20 +101,21 @@ function Navigator({ classes, location = null, ...rest }) {
 						<Grid item>Paperbase</Grid>
 					</Grid>
 				</ListItem>
-				<ListItem className={classNames(classes.item, classes.itemCategory)}>
-					<ListItemIcon>
-						<HomeIcon />
-					</ListItemIcon>
-					<ListItemText
-						classes={{
-							primary: classes.itemPrimary,
-						}}
-					>
-						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+
+				<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+					<ListItem className={classNames(classes.item, classes.itemCategory)}>
+						<ListItemIcon>
+							<HomeIcon />
+						</ListItemIcon>
+						<ListItemText
+							classes={{
+								primary: classes.itemPrimary,
+							}}
+						>
 							Project Overview
-						</Link>
-					</ListItemText>
-				</ListItem>
+						</ListItemText>
+					</ListItem>
+				</Link>
 				{categories.map(({ id, children }) => (
 					<React.Fragment key={id}>
 						<ListItem className={classes.categoryHeader}>
@@ -127,31 +128,30 @@ function Navigator({ classes, location = null, ...rest }) {
 							</ListItemText>
 						</ListItem>
 						{children.map(({ id: childId, icon, page = null }) => {
-							return (
-								<ListItem
-									button
-									dense
-									key={childId}
-									className={classNames(
-										classes.item,
-										classes.itemActionable,
-										(matchPath && page ? matchPath === page : false) && classes.itemActiveItem
-									)}
-								>
-									<ListItemIcon>{icon}</ListItemIcon>
-									<ListItemText
-										classes={{
-											primary: classes.itemPrimary,
-											textDense: classes.textDense,
-										}}
-									>
-										{page && (
-											<Link style={{ textDecoration: 'none', color: 'inherit' }} to={page}>
-												{childId}
-											</Link>
+							return page ? (
+								<Link key={childId} style={{ textDecoration: 'none', color: 'inherit' }} to={page}>
+									<ListItem
+										button
+										dense
+										className={classNames(
+											classes.item,
+											classes.itemActionable,
+											(matchPath && page ? matchPath === page : false) && classes.itemActiveItem
 										)}
-									</ListItemText>
-								</ListItem>
+									>
+										<ListItemIcon>{icon}</ListItemIcon>
+										<ListItemText
+											classes={{
+												primary: classes.itemPrimary,
+												textDense: classes.textDense,
+											}}
+										>
+											{childId}
+										</ListItemText>
+									</ListItem>
+								</Link>
+							) : (
+								<div />
 							)
 						})}
 						<Divider className={classes.divider} />
@@ -164,7 +164,7 @@ function Navigator({ classes, location = null, ...rest }) {
 
 Navigator.propTypes = {
 	classes: PropTypes.object.isRequired,
-	location: PropTypes.object.isRequired,
+	location: PropTypes.object,
 }
 
 export default withStyles(styles)(Navigator)
