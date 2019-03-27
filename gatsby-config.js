@@ -8,4 +8,9 @@ module.exports = {
 			twitter: `willcode4food`,
 		},
 	},
+	plugins: [
+		{
+			resolve: `gatsby-plugin-material-ui`,
+		},
+	],
 }
