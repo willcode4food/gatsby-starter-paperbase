@@ -167,7 +167,7 @@ function Layout({ location, title, children, classes }) {
 						/>
 					</Hidden>
 					<Hidden xsDown implementation="css">
-						<Navigator PaperProps={{ style: { width: drawerWidth } }} />
+						<Navigator PaperProps={{ style: { width: drawerWidth } }} location={location} />
 					</Hidden>
 				</nav>
 				<div className={classes.appContent}>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
@@ -19,17 +20,17 @@ import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponen
 import TimerIcon from '@material-ui/icons/Timer'
 import SettingsIcon from '@material-ui/icons/Settings'
 import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup'
-
+import Logo from 'components/Logo'
 const categories = [
 	{
 		id: 'Develop',
 		children: [
-			{ id: 'Authentication', icon: <PeopleIcon />, active: true },
-			{ id: 'Database', icon: <DnsRoundedIcon /> },
-			{ id: 'Storage', icon: <PermMediaOutlinedIcon /> },
-			{ id: 'Hosting', icon: <PublicIcon /> },
-			{ id: 'Functions', icon: <SettingsEthernetIcon /> },
-			{ id: 'ML Kit', icon: <SettingsInputComponentIcon /> },
+			{ id: 'Authentication', icon: <PeopleIcon />, page: 'authentication' },
+			{ id: 'Database', icon: <DnsRoundedIcon />, page: 'database' },
+			{ id: 'Storage', icon: <PermMediaOutlinedIcon />, page: 'storage' },
+			{ id: 'Hosting', icon: <PublicIcon />, page: 'hosting' },
+			{ id: 'Functions', icon: <SettingsEthernetIcon />, page: 'functions' },
+			{ id: 'ML Kit', icon: <SettingsInputComponentIcon />, page: 'mlkit' },
 		],
 	},
 	{
@@ -87,16 +88,15 @@ const styles = theme => ({
 	},
 })
 
-function Navigator(props) {
-	const { classes, ...other } = props
-
+function Navigator({ classes, location = null, ...other }) {
+	const matchPath = location ? location.pathname.replace(/\//g, '') : null
 	return (
 		<Drawer variant="permanent" {...other}>
 			<List disablePadding>
 				<ListItem className={classNames(classes.firebase, classes.item, classes.itemCategory)}>
 					<Grid container spacing={8} direction="row">
 						<Grid item>
-							<img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="40" />
+							<Logo />
 						</Grid>
 						<Grid item>Paperbase</Grid>
 					</Grid>
@@ -110,7 +110,9 @@ function Navigator(props) {
 							primary: classes.itemPrimary,
 						}}
 					>
-						Project Overview
+						<Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+							Project Overview
+						</Link>
 					</ListItemText>
 				</ListItem>
 				{categories.map(({ id, children }) => (
@@ -124,28 +126,33 @@ function Navigator(props) {
 								{id}
 							</ListItemText>
 						</ListItem>
-						{children.map(({ id: childId, icon, active }) => (
-							<ListItem
-								button
-								dense
-								key={childId}
-								className={classNames(
-									classes.item,
-									classes.itemActionable,
-									active && classes.itemActiveItem
-								)}
-							>
-								<ListItemIcon>{icon}</ListItemIcon>
-								<ListItemText
-									classes={{
-										primary: classes.itemPrimary,
-										textDense: classes.textDense,
-									}}
+						{children.map(({ id: childId, icon, page = null }) => {
+							console.log(page)
+							return (
+								<ListItem
+									button
+									dense
+									key={childId}
+									className={classNames(
+										classes.item,
+										classes.itemActionable,
+										(matchPath && page ? matchPath === page : false) && classes.itemActiveItem
+									)}
 								>
-									{childId}
-								</ListItemText>
-							</ListItem>
-						))}
+									<ListItemIcon>{icon}</ListItemIcon>
+									<ListItemText
+										classes={{
+											primary: classes.itemPrimary,
+											textDense: classes.textDense,
+										}}
+									>
+										<Link style={{ textDecoration: 'none', color: 'inherit' }} to={page}>
+											{childId}
+										</Link>
+									</ListItemText>
+								</ListItem>
+							)
+						})}
 						<Divider className={classes.divider} />
 					</React.Fragment>
 				))}
