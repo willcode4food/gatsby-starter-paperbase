@@ -181,6 +181,6 @@ Layout.propTypes = {
 	classes: PropTypes.object.isRequired,
 	location: PropTypes.object.isRequired,
 	title: PropTypes.string.isRequired,
-	children: PropTypes.object.isRequired,
+	children: PropTypes.object,
 }
 export default withStyles(styles)(Layout)

@@ -129,7 +129,11 @@ function Navigator({ classes, location = null, ...rest }) {
 						</ListItem>
 						{children.map(({ id: childId, icon, page = null }) => {
 							return page ? (
-								<Link key={childId} style={{ textDecoration: 'none', color: 'inherit' }} to={page}>
+								<Link
+									key={childId}
+									style={{ textDecoration: 'none', color: 'inherit' }}
+									to={`/${page}`}
+								>
 									<ListItem
 										button
 										dense

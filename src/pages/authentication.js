@@ -12,6 +12,6 @@ function AuthenticationPage({ location }) {
 	)
 }
 AuthenticationPage.propTypes = {
-	data: PropTypes.object.isRequired,
+	location: PropTypes.object,
 }
 export default AuthenticationPage
