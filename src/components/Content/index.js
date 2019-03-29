@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
-
+import ContentGraphic from './ContentGraphic'
 const styles = theme => ({
 	paper: {
 		margin: 'auto',
@@ -19,9 +19,6 @@ const styles = theme => ({
 	searchBar: {
 		borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
 	},
-	searchInput: {
-		fontSize: theme.typography.fontSize,
-	},
 	block: {
 		display: 'block',
 	},
@@ -29,37 +26,35 @@ const styles = theme => ({
 		marginRight: theme.spacing.unit,
 	},
 	contentWrapper: {
-		margin: '40px 16px',
+		height: 368,
 	},
 	container: {
-		padding: '48px 36px 0',
+		padding: '48px 36px 48px',
 	},
 })
 
 function Content({ classes }) {
 	return (
 		<div className={classes.container}>
-			<Grid container spacing={16} alignItems="center" direction="column">
-				<Grid item>
-					<Paper className={classes.paper}>
-						<div className={classes.contentWrapper}>
-							<Typography color="textSecondary" align="center">
-								Welcome to your new project
-							</Typography>
-						</div>
-					</Paper>
+			<Paper className={classes.paper}>
+				<Grid
+					container
+					spacing={16}
+					className={classes.contentWrapper}
+					wrap
+					alignItems="center"
+					justify="center"
+				>
+					<Grid lg={6} xs={12} item align="center">
+						<ContentGraphic />
+					</Grid>
+					<Grid lg={6} xs={12} item>
+						<Typography component="h2" variant="display1" color="textSecondary" align="center">
+							Welcome to your new project
+						</Typography>
+					</Grid>
 				</Grid>
-				<Grid item>
-					<Paper className={classes.paper}>
-						{' '}
-						<div className={classes.contentWrapper}>
-							<Typography color="textSecondary" align="center">
-								Happy Coding!
-							</Typography>
-						</div>
-					</Paper>
-				</Grid>
-			</Grid>
+			</Paper>
 		</div>
 	)
 }

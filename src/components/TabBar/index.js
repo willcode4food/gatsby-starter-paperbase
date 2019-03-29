@@ -11,14 +11,13 @@ const styles = theme => ({
 	},
 })
 
-function TabBar({ classes }) {
+function TabBar({ classes, tabNames = [] }) {
 	return (
 		<AppBar component="div" className={classes.secondaryBar} color="primary" position="static" elevation={0}>
 			<Tabs value={0} textColor="inherit">
-				<Tab textColor="inherit" label="Users" />
-				<Tab textColor="inherit" label="Sign-in method" />
-				<Tab textColor="inherit" label="Templates" />
-				<Tab textColor="inherit" label="Usage" />
+				{tabNames.map(tabName => (
+					<Tab textColor="inherit" label={`${tabName}`} />
+				))}
 			</Tabs>
 		</AppBar>
 	)
@@ -26,6 +25,7 @@ function TabBar({ classes }) {
 
 TabBar.propTypes = {
 	classes: PropTypes.object.isRequired,
+	tabNames: PropTypes.array.isRequired,
 }
 
 export default withStyles(styles)(TabBar)

@@ -39,8 +39,8 @@ const styles = theme => ({
 		padding: '48px 36px 0',
 	},
 })
-const tabNames = ['Users', 'Sign-in method', 'Templates', 'Usage']
-function AuthContent({ classes }) {
+const tabNames = ['Data', 'Rules', 'Indexes', 'Usage']
+function DatabaseContent({ classes }) {
 	return (
 		<>
 			<TabBar tabNames={tabNames} />
@@ -87,8 +87,8 @@ function AuthContent({ classes }) {
 	)
 }
 
-AuthContent.propTypes = {
+DatabaseContent.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(AuthContent)
+export default withStyles(styles)(DatabaseContent)
